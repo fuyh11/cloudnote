@@ -12,6 +12,7 @@ public class UserDAO implements Serializable{
 	private String token;
 	private String nick;
 
+
 	public UserDAO() {
 	}
 
