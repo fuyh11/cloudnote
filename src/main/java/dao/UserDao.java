@@ -2,7 +2,7 @@ package dao;
 
 import java.io.Serializable;
 
-public class UserDAO implements Serializable{
+public class UserDao implements Serializable{
 	private static final long
 		serialVersionUID = -288301177049569372L;
 
@@ -13,10 +13,10 @@ public class UserDAO implements Serializable{
 	private String nick;
 
 
-	public UserDAO() {
+	public UserDao() {
 	}
 
-	public UserDAO(String id, String name, String password, String token, String nick) {
+	public UserDao(String id, String name, String password, String token, String nick) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -87,7 +87,7 @@ public class UserDAO implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserDAO other = (UserDAO) obj;
+		UserDao other = (UserDao) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
