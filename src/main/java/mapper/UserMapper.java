@@ -1,7 +1,6 @@
 package mapper;
 
-
-import dao.UserDao;
+import service.user.dataobject.UserDao;
 
 public interface UserMapper {
 	

@@ -1,4 +1,4 @@
-package dao;
+package service.user.dataobject;
 
 import java.io.Serializable;
 

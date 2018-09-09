@@ -1,4 +1,4 @@
-package service;
+package service.exception;
 
 public class NotebookNotFoundException extends RuntimeException {
 	private static final long serialVersionUID = 9193074130856708009L;

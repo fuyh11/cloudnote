@@ -1,4 +1,4 @@
-package service;
+package service.exception;
 
 public class UserNameException extends RuntimeException {
 	private static final long serialVersionUID = 6435296194529486206L;

@@ -1,4 +1,4 @@
-package service.impl;
+package service.user.impl;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -9,12 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
-import dao.UserDao;
 import mapper.UserMapper;
-import service.PasswordException;
-import service.UserNameException;
-import service.UserNotFoundException;
-import service.UserService;
+import service.exception.PasswordException;
+import service.exception.UserNameException;
+import service.exception.UserNotFoundException;
+import service.user.UserService;
+import service.user.dataobject.UserDao;
+import service.user.param.UserParam;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -41,9 +42,12 @@ public class UserServiceImpl implements UserService {
         throw new PasswordException("密码错误");
     }
 
-    public UserDao regist(String name, String nick, String password, String confirm)
-        throws UserNameException, PasswordException {
+    public UserDao regist(UserParam param) throws UserNameException, PasswordException {
         //检查name, 不能重复
+        String name = param.getName();
+        String password = param.getPassword();
+        String nick = param.getNick();
+        String confirm = param.getConfirm();
         if (name == null || name.trim().isEmpty()) {
             throw new UserNameException("不能空");
         }

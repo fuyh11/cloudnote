@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import dao.Note;
+import service.exception.NoteNotFoundException;
+import service.exception.NotebookNotFoundException;
+import service.exception.NotebookNoteFoundExcepotion;
+import service.exception.UserNotFoundException;
 
 public interface NoteService {
 	
@@ -17,7 +21,6 @@ public interface NoteService {
 		throws NoteNotFoundException;
 	
 	public Note addNote(String userId, String notebookId, String title)
-			throws UserNotFoundException,
-			NotebookNotFoundException;
+			throws UserNotFoundException, NotebookNotFoundException;
 
 }

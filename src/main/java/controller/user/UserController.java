@@ -1,4 +1,4 @@
-package controller;
+package controller.user;
 
 import javax.annotation.Resource;
 
@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import dao.UserDao;
-import service.PasswordException;
-import service.UserNameException;
-import service.UserNotFoundException;
-import service.UserService;
+import service.exception.PasswordException;
+import service.exception.UserNameException;
+import service.exception.UserNotFoundException;
+import service.user.UserService;
+import service.user.dataobject.UserDao;
+import service.user.param.UserParam;
 import util.JsonResult;
 
 @Controller
@@ -53,8 +54,8 @@ public class UserController {
 
     @RequestMapping("/regist.do")
     @ResponseBody
-    public JsonResult regist(String name, String nick, String password, String confirm) {
-        UserDao user = userService.regist(name, nick, password, confirm);
+    public JsonResult regist(UserParam param) {
+        UserDao user = userService.regist(param);
         return new JsonResult(user);
     }
 

@@ -1,4 +1,4 @@
-package service;
+package service.exception;
 
 public class NoteNotFoundException extends RuntimeException {
 	private static final long serialVersionUID = -3058836737932943698L;

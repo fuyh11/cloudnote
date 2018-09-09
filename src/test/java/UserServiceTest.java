@@ -1,7 +1,7 @@
 import org.junit.Test;
 
-import dao.UserDao;
-import service.UserService;
+import service.user.UserService;
+import service.user.dataobject.UserDao;
 
 public class UserServiceTest extends BaseTest {
 
