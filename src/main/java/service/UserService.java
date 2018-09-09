@@ -1,6 +1,6 @@
 package service;
 
-import dao.UserDAO;
+import dao.UserDao;
 
 /**
  * 业务层接口 
@@ -15,7 +15,7 @@ public interface UserService {
 	 * @throws UserNotFoundException 用户不存在
 	 * @throws PasswordException 密码错误
 	 */
-	UserDAO login(String name, String password)
+	UserDao login(String name, String password)
 		throws UserNotFoundException,
 		PasswordException;
 }

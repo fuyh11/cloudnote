@@ -1,38 +1,18 @@
-package test;
-
-import dao.UserDAO;
-import junit.runner.BaseTestRunner;
-import mapper.UserMapper;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import dao.UserDao;
+import mapper.UserMapper;
 
-public class UserDaoTest{
-	protected ClassPathXmlApplicationContext ctx;
+public class UserDaoTest extends BaseTest {
 
-	@Before
-	public void initCtx() {
-		ctx = new ClassPathXmlApplicationContext(
-				"conf/spring-mvc.xml",
-				"conf/spring-mybatis.xml",
-				"conf/spring-service.xml");
-	}
+    @Test
+    public void testFindUserByName() {
+        String name = "demo";
+        UserMapper userMapper = ctx.getBean("userMapper", UserMapper.class);
+        UserDao user = userMapper.findUserByName(name);
+        System.out.println(user);
+    }
 
-	@After
-	public void close() {
-		ctx.close();
-	}
-	
-	@Test
-	public void testFindUserByName(){
-		String name = "demo";
-		UserMapper dao = ctx.getBean(
-			"userDao", UserMapper.class);
-		UserDAO user = dao.findUserByName(name);
-		System.out.println(user); 
-	}
 }
 
 

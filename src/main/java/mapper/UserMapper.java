@@ -1,10 +1,10 @@
 package mapper;
 
 
-import dao.UserDAO;
+import dao.UserDao;
 
 public interface UserMapper {
 	
-	UserDAO findUserByName(String name);
+	UserDao findUserByName(String name);
 
 }

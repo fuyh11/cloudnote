@@ -5,7 +5,7 @@
 	
 	<select id="findUserByName" 
 		parameterType="string"
-		resultType="dao.UserDAO">
+		resultType="dao.UserDao">
 		select 
 			cn_user_id as id,
 			cn_user_name as name,
