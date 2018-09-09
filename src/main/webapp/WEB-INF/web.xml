@@ -1,10 +1,14 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>note</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
   <servlet>
     <description></description>
     <display-name>DispatcherServlet</display-name>
@@ -21,5 +25,14 @@
     <servlet-name>DispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>/alert/*"</url-pattern>
+  <url-pattern>/images/*</url-pattern>
+    <url-pattern>/scripts/*</url-pattern>
+    <url-pattern>/fonts/*</url-pattern>
+    <url-pattern>/ico/*</url-pattern>
+    <url-pattern>/sounds/*</url-pattern>
+    <url-pattern>/styles/*</url-pattern>
+  </servlet-mapping>
 </web-app>
-

@@ -18,6 +18,22 @@ public interface UserService {
 	UserDao login(String name, String password)
 		throws UserNotFoundException,
 		PasswordException;
+
+
+	/**
+	 * UserService 中添加注册功能
+	 * @param name
+	 * @param nick
+	 * @param password
+	 * @param confirm
+	 * @return 注册成功的用户信息
+	 * @throws UserNameException 用户名异常
+	 * @throws PasswordException 密码异常
+	 */
+	UserDao regist(String name, String nick,
+		String password, String confirm)
+		throws UserNameException,
+		PasswordException;
 }
 
 
