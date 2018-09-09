@@ -17,8 +17,10 @@ import lombok.Data;
 @Data
 public class UserParam {
 
+    private String id;
     private String nick;
     private String name;
     private String password;
     private String confirm;
+    private String token;
 }

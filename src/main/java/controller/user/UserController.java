@@ -24,9 +24,9 @@ public class UserController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public Object login(String name, String password) {
+    public Object login(UserParam param) {
 
-        UserDao user = userService.login(name, password);
+        UserDao user = userService.login(param);
         return new JsonResult(user);
 
     }

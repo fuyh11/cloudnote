@@ -24,7 +24,10 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
 
-    public UserDao login(String name, String password) throws UserNotFoundException, PasswordException {
+    public UserDao login(UserParam param) throws UserNotFoundException, PasswordException {
+        String name = param.getName();
+        String password = param.getPassword();
+
         if (StringUtils.isEmpty(password)) {
             throw new PasswordException("密码空");
         }
@@ -32,7 +35,7 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFoundException("用户名空");
         }
         UserDao user = userMapper.findUserByName(name.trim());
-        if (user == null) {
+        if(Objects.isNull(user)){
             throw new UserNotFoundException("用户名错误");
         }
         String pwd = DigestUtils.md5DigestAsHex((SALT + password.trim()).getBytes());
@@ -48,34 +51,50 @@ public class UserServiceImpl implements UserService {
         String password = param.getPassword();
         String nick = param.getNick();
         String confirm = param.getConfirm();
-        if (name == null || name.trim().isEmpty()) {
+        if (StringUtils.isEmpty(name)) {
             throw new UserNameException("不能空");
         }
-        UserDao one = userMapper.findUserByName(name);
-        if (one != null) {
+        UserDao userDao = userMapper.findUserByName(name);
+        if (Objects.isNull(userDao)) {
             throw new UserNameException("已注册");
         }
         //检查密码
-        if (password == null || password.trim().isEmpty()) {
+        if (StringUtils.isEmpty(password)) {
             throw new PasswordException("不能空");
         }
-        if (!password.equals(confirm)) {
+        if (!Objects.equals(password,confirm)) {
             throw new PasswordException("确认密码不一致");
         }
         //检查nick
-        if (nick == null || nick.trim().isEmpty()) {
-            nick = name;
+        if (StringUtils.isEmpty(nick)) {
+            param.setNick(name);
         }
-        String id = UUID.randomUUID().toString();
-        String token = "";
+        param.setId(UUID.randomUUID().toString());
+        param.setToken("");
+        param.setPassword( DigestUtils.md5DigestAsHex((SALT + password).getBytes()));
 
-        password = DigestUtils.md5DigestAsHex((SALT + password).getBytes());
-        UserDao user = new UserDao(id, name, password, token, nick);
-        int n = userMapper.addUser(user);
+        UserDao user = convertToUserDao(param);
+        Integer n = userMapper.addUser(user);
         if (n != 1) {
             throw new RuntimeException("添加失败!");
         }
         return user;
+    }
+
+
+    public static UserDao convertToUserDao(UserParam userParam) {
+        if (userParam == null) {
+            return null;
+        }
+        UserDao userDao = new UserDao();
+
+        userDao.setId(userParam.getId());
+        userDao.setName(userParam.getName());
+        userDao.setPassword(userParam.getPassword());
+        userDao.setToken(userParam.getToken());
+        userDao.setNick(userParam.getNick());
+
+        return userDao;
     }
 
 }
