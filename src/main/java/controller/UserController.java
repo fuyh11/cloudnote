@@ -1,4 +1,4 @@
-package controller.user;
+package controller;
 
 import javax.annotation.Resource;
 
@@ -52,7 +52,7 @@ public class UserController {
         return new JsonResult(4, e);
     }
 
-    @RequestMapping("/regist.do")
+    @RequestMapping("/regist")
     @ResponseBody
     public JsonResult regist(UserParam param) {
         UserDao user = userService.regist(param);

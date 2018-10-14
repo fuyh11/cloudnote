@@ -1,4 +1,4 @@
-package controller.note;
+package controller;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import controller.AbstractController;
 import service.note.NoteService;
 import service.note.dataobject.NoteDAO;
 import util.JsonResult;

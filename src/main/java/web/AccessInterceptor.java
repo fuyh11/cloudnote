@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.tedu.note.entity.User;
-import cn.tedu.note.util.JsonResult;
+import service.user.dataobject.UserDao;
+import util.JsonResult;
 
 @Component
 public class AccessInterceptor implements 
@@ -23,11 +23,11 @@ public class AccessInterceptor implements
 		String path=req.getRequestURI();
 		//System.out.println("Interceptor:"+path);
 		HttpSession session = req.getSession();
-		User user = (User)session
+		UserDao user = (UserDao) session
 				.getAttribute("loginUser");
 		//如果没有登录就返回错误的JSON消息
 		if(user==null){
-			JsonResult result = 
+			JsonResult result =
 				new JsonResult("需要重新登录!");
 			//利用response 对象反馈结果
 			res.setContentType(

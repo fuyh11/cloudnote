@@ -2,15 +2,17 @@ import org.junit.Test;
 
 import service.user.UserService;
 import service.user.dataobject.UserDao;
+import service.user.param.UserParam;
 
 public class UserServiceTest extends BaseTest {
 
     @Test
     public void testLogin() {
-        String name = "demo";
-        String password = "123456";
         UserService service = ctx.getBean("userService", UserService.class);
-        UserDao user = service.login(name, password);
+        UserParam param = new UserParam();
+        param.setName("demo");
+        param.setPassword("123456");
+        UserDao user = service.login(param);
         System.out.println(user);
     }
 }

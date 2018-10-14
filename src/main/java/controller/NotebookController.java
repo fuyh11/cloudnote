@@ -1,4 +1,4 @@
-package controller.notebook;
+package controller;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import controller.AbstractController;
 import service.notebook.NotebookService;
 import util.JsonResult;
 
@@ -20,7 +19,7 @@ public class NotebookController extends AbstractController {
     @Resource
     private NotebookService notebookService;
 
-    @RequestMapping("/list.do")
+    @RequestMapping("/list")
     @ResponseBody
     public JsonResult list(String userId) {
         List<Map<String, Object>> list = notebookService.listNotebooks(userId);
