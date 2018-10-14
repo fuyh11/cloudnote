@@ -16,7 +16,7 @@ public abstract class AbstractController {
     @ResponseBody
     public Object handleException(Exception e) {
         e.printStackTrace();
-        System.out.println("testmerge");
+        System.out.println("testmergeaaa");
         return new JsonResult(e);
     }
 
